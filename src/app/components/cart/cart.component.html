@@ -1,0 +1,74 @@
+<section *ngIf="cart.length <= 0">
+    <div class="empty-cart-message">Your cart is empty.</div>
+  </section>
+  
+  <section *ngIf="cart.length > 0" class="cart-container">
+    <div class="cart-items">
+      <div class="cart-item" *ngFor="let cartItem of cart">
+        <img src="{{ cartItem.product.url }}" alt="{{ cartItem.product.name }}" />
+        <div class="cart-item-details">
+          <h3>{{ cartItem.product.name }}</h3>
+          <span>{{ cartItem.product.price  }}</span>
+          <span
+            >Amount :
+            <input
+              name="quantity"
+              class="number-input"
+              type="number"
+              min="0"
+              [(ngModel)]="cartItem.quantity"
+              (ngModelChange)="handleUpdateQuantity()"
+          /></span>
+        </div>
+        <span class="cross" (click)="handleRemove(cartItem)">❌</span>
+      </div>
+  
+      <p class="cart-total">Total : {{ total }}</p>
+    </div>
+  
+    <form #form="ngForm" class="cart-form" (ngSubmit)="handleSubmit()">
+      <div class="form-input form-margin">
+        <label for="name">Full name</label>
+        <input
+          type="text"
+          [(ngModel)]="name"
+          name="name"
+          required
+          minlength="3"
+          placeholder="(minimum 3 characters)"
+        />
+      </div>
+      <div class="form-input form-margin">
+        <label for="email">Address</label>
+        <input
+          type="text"
+          [(ngModel)]="address"
+          name="address"
+          required
+          minlength="6"
+          placeholder="(minimum 6 characters)"
+        />
+      </div>
+      <div class="form-input form-margin">
+        <label for="email">Credit card number</label>
+        <input
+          [(ngModel)]="card"
+          name="card"
+          required
+          minlength="16"
+          maxlength="16"
+          type="tel"
+          pattern="[0-9\s]{13,19}"
+          placeholder="(16-digit number)"
+          (input)="ngOnChanges(card)"
+        />
+        <span *ngIf="isNumber === false" class="error"
+          >Please enter numbers only !</span
+        >
+        <span>We'll never share you payment details with anyone else.</span>
+      </div>
+      <div class="form-submit">
+        <input type="submit" value="Submit" [disabled]="form.invalid" />
+      </div>
+    </form>
+  </section>
