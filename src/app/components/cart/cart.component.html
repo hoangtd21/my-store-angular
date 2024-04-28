@@ -8,7 +8,7 @@
         <img src="{{ cartItem.product.url }}" alt="{{ cartItem.product.name }}" />
         <div class="cart-item-details">
           <h3>{{ cartItem.product.name }}</h3>
-          <span>{{ cartItem.product.price  }}</span>
+          <span>${{ cartItem.product.price  }}</span>
           <span
             >Amount :
             <input
@@ -23,7 +23,7 @@
         <span class="cross" (click)="handleRemove(cartItem)">❌</span>
       </div>
   
-      <p class="cart-total">Total : {{ total }}</p>
+      <h2 class="cart-total">Total: ${{ total }}</h2>
     </div>
   
     <form #form="ngForm" class="cart-form" (ngSubmit)="handleSubmit()">

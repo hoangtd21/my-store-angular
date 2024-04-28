@@ -3,7 +3,7 @@
     ><img class="product-image" src="{{ product.url }}"
   /></a>
   <h3>{{ product.name }}</h3>
-  <span>{{ product.price }}</span>
+  <span>${{ product.price }}</span>
   <form (ngSubmit)="handleAddToCart()">
     <select [(ngModel)]="selectQuantity" name="select">
       <option default value="1">1</option>
@@ -14,7 +14,7 @@
     </select>
     <button type="submit">Add to cart</button>
   </form>
-  <div *ngIf="productAdded" class="product-added">
+  <!-- <div *ngIf="productAdded" class="product-added">
     Added {{ selectQuantity }} "{{ product.name }}" to the cart.
-  </div>
+  </div> -->
 </div>

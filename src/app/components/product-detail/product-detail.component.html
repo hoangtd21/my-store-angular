@@ -2,7 +2,7 @@
     <div><img src="{{ product.url }}" alt="{{ product.name }}" /></div>
     <div class="detail-item">
       <h2>{{ product.name }}</h2>
-      <p>{{ product.price }}</p>
+      <p>${{ product.price }}</p>
       <p>{{ product.description }}</p>
       <form (ngSubmit)="handleAddToCart()">
         <select [(ngModel)]="selectQuantity" name="select">
@@ -14,9 +14,9 @@
         </select>
         <button type="submit">Add to cart</button>
       </form>
-      <div *ngIf="productAdded" class="product-added">
+      <!-- <div *ngIf="productAdded" class="product-added">
         Added {{ selectQuantity }} "{{ product.name }}" to the cart.
-      </div>
+      </div> -->
       <a routerLink="/" class="back-link">⬅️ Back to product list</a>
     </div>
   </section>

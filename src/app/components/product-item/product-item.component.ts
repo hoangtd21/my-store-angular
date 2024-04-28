@@ -24,8 +24,9 @@ export class ProductItemComponent {
   handleAddToCart() {
     this.cartService.addToCart(this.product, this.selectQuantity);
     this.productAdded = true;
-    setTimeout(() => {
-      this.productAdded = false;
-    }, 1500);
+    alert('Added to cart!');
+    // setTimeout(() => {
+    //   this.productAdded = false;
+    // }, 1500);
   }
 }
